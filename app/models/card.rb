@@ -10,7 +10,10 @@ class Card < ActiveRecord::Base
     self.create(fun_fact_ids: random_fun_fact_ids)
   end
 
+  # Super inneficient but we need to maintain order
   def fun_facts
-    FunFact.where(id: fun_fact_ids)
+    fun_fact_ids.map do |id|
+      FunFact.find(id)
+    end
   end
 end
