@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
+  delete '/nuke' => 'home#nuke'
+
   resources :cards, only: :index
+  resources :fun_facts, only: [] do
+    post :import, on: :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
