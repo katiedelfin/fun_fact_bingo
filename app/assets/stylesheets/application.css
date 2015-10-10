@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+.card {
+  page-break-after: always;
+}
+
+.card h1 {
+  font-size: 20px;
+}
+
+.card table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.card td {
+  border: solid 2px #ccc;
+  padding: 2em .5em;
+  width: 20%;
+  text-align: center;
+  font-size: 13px;
+}
+
+.card p {
+  font-size: 12px;
+}

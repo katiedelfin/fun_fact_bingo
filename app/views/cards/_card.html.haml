@@ -1,8 +1,10 @@
-%h2 Card #{card.id}
-
 - card.fun_facts.each_slice(25) do |subcard|
-  %table{border: 1}
-    - subcard.each_slice(5) do |row|
-      %tr
-        - row.each do |square|
-          %td= square.text
+  .card
+    %h1 Fun Fact Bingo
+    %table
+      - subcard.each_slice(5) do |row|
+        %tr
+          - row.each do |square|
+            %td= square.text
+
+    %p Card Set ##{card.id}
