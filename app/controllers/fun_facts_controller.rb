@@ -6,9 +6,11 @@ class FunFactsController < ApplicationController
 
     fun_fact_arrays.each do |array|
       user = User.where(email: array.shift).first_or_create
-      user.fun_facts.create(text: array.shift)
-      user.fun_facts.create(text: array.shift)
+      user.fun_facts.where(text: array.shift).first_or_create
+      user.fun_facts.where(text: array.shift).first_or_create
     end
+
+    Card.destroy_all
 
     User.count.times do
       Card.generate
