@@ -15,6 +15,7 @@
  */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Delius+Unicase:400,700);
 
 html {
   font-family: 'Open Sans', sans-serif;
@@ -23,25 +24,67 @@ html {
 
 .card {
   page-break-after: always;
+  border-radius: 10px;
+  border: solid 10px #47ADC2;
+  background-color: #47ADC2;
 }
 
 .card h1 {
-  font-size: 20px;
+  color: #fff;
+  font-size: 30px;
+  font-family: 'Delius Unicase';
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card h1 small {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #47ADC2;
+}
+
+.inner-card {
+  background-color: white;
+  padding: 5px;
 }
 
 .card table {
-  margin: 0 auto;
   border-collapse: collapse;
 }
 
 .card td {
-  border: solid 2px #ccc;
-  padding: 2em .5em;
+  /*border: solid 2px #acacac;*/
+  padding: 1.5em .5em;
   width: 20%;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 100;
+  background-color: white;
+  border-top:
 }
 
 .card p {
   font-size: 12px;
+}
+
+table {
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid black;
+}
+table tr:first-child th,
+table tr:first-child td {
+  border-top: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
 }
