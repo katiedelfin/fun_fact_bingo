@@ -1,10 +1,12 @@
-- card.fun_facts.each_slice(25) do |subcard|
+- card.fun_facts.in_groups_of(Card::CARD_SIZE / 2) do |subcard|
   .card
     %h1 Fun Fact Bingo
     %table
-      - subcard.each_slice(5) do |row|
+      -# Insert a blank square
+      - subcard = subcard.insert(subcard.length / 2, FunFact.new)
+      - subcard.in_groups_of(5) do |row|
         %tr
-          - row.each do |square|
+          - row.compact.each do |square|
             %td= square.text
 
     %p Card Set ##{card.id}
