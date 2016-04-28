@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   delete '/nuke' => 'home#nuke'
 
   resources :cards, only: :index
-  resources :fun_facts, only: [:index, :edit, :update, :destroy]
+  resources :fun_facts, except: [:show]
 
   resources :sessions, only: [:new, :create, :destroy]
   get 'auth/:provider/callback', to: 'sessions#create', as: :oauth_callback

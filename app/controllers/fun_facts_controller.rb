@@ -1,21 +1,39 @@
-require 'csv'
-
 class FunFactsController < ApplicationController
-  def import
-    fun_fact_arrays = CSV.parse(File.open(params[:file].path), headers: false)
+  before_filter :find_fun_fact, only: [:edit, :update, :destroy]
 
-    fun_fact_arrays.each do |array|
-      user = User.where(email: array.shift).first_or_create
-      user.fun_facts.where(text: array.shift).first_or_create
-      user.fun_facts.where(text: array.shift).first_or_create
-    end
+  def index
+    @fun_facts = current_user.fun_facts
+  end
 
-    Card.destroy_all
+  def new
+    @fun_fact = current_user.fun_facts.build
+  end
 
-    User.count.times do
-      Card.generate
-    end
+  def create
+    @fun_fact = current_user.fun_facts.create(fun_fact_params)
+    redirect_to fun_facts_url
+  end
 
-    redirect_to cards_path
+  def edit
+  end
+
+  def update
+    @fun_fact.update_attributes(fun_fact_params)
+    redirect_to fun_facts_url
+  end
+
+  def destroy
+    @fun_fact.destroy
+    redirect_to fun_facts_url
+  end
+
+  private
+
+  def find_fun_fact
+    @fun_fact = current_user.fun_facts.find(params[:id])
+  end
+
+  def fun_fact_params
+    params.require(:fun_fact).permit(:text)
   end
 end
