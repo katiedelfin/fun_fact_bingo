@@ -16,6 +16,6 @@ class CardsController < ApplicationController
       flash[:error] = "Not enough fun facts to re-generate cards."
     end
 
-    redirect_to :root
+    redirect_to cards_url
   end
 end
