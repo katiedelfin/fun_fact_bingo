@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_signed_in?
 
+  def admin_user?
+    current_user && current_user.admin?
+  end
+  helper_method :admin_user?
+
   def authenticate_user!
     if current_user
       true
@@ -26,6 +31,15 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :authenticate_user!
+
+  def authorize_admin!
+    if admin_user?
+      true
+    else
+      redirect_to :root
+    end
+  end
+  helper_method :authorize_admin!
 
   def login_redirect?
     request.path == login_path

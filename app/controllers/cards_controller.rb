@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_filter :authorize_admin!
+
   def index
     @cards = Card.all
   end

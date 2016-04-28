@@ -8,8 +8,9 @@
     = csrf_meta_tags
   %body
     %h1 FUN FACT BINGO
-    %ul
-      %li= link_to "Print Cards", cards_path
-      %li= link_to "Regenerate Cards", regen_cards_path
+    - if admin_user?
+      %ul
+        %li= link_to "Print Cards", cards_path
+        %li= link_to "Regenerate Cards", regen_cards_path
 
     = yield
