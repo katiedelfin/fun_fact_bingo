@@ -1,8 +1,4 @@
 %h1 FUN FACT BINGO
 
-= form_tag import_fun_facts_path, multipart: true, method: :post do
-  = file_field_tag :file
-  = submit_tag "Import"
-
-
-%p= link_to "Start Over", nuke_path, method: :delete
+%p= link_to "Print Cards", cards_path
+%p= link_to "Regenerate Cards", regen_cards_path

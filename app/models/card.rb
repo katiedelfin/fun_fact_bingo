@@ -9,7 +9,14 @@ class Card < ActiveRecord::Base
       user.fun_facts.shuffle[0].id
     end
 
-    self.create(fun_fact_ids: random_fun_fact_ids)
+    generated = false
+
+    until generated
+      generated_card = self.create(fun_fact_ids: random_fun_fact_ids)
+      generated = generated_card.persisted?
+    end
+
+    generated_card
   end
 
   # Super inneficient but we need to maintain order

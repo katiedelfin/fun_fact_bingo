@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  delete '/nuke' => 'home#nuke'
 
-  resources :cards, only: :index
+  resources :cards, only: :index do
+    get :regen, on: :collection
+  end
+
   resources :fun_facts, except: [:show]
 
   resources :sessions, only: [:new, :create, :destroy]
