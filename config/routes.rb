@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'fun_facts#index'
 
   resources :cards, only: :index do
     get :regen, on: :collection
