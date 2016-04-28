@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.name || self.email
   end
 
+  def exceeds_fun_fact_limit?
+    fun_facts.count >= FunFact::MAXIMUM_PER_USER
+  end
+
   private
 
   def self.email_whitelist?

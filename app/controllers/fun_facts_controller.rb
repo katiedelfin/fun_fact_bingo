@@ -1,5 +1,6 @@
 class FunFactsController < ApplicationController
   before_filter :find_fun_fact, only: [:edit, :update, :destroy]
+  before_filter :enforce_fun_fact_limit, only: [:new, :create]
 
   def index
     @fun_facts = current_user.fun_facts
@@ -35,5 +36,12 @@ class FunFactsController < ApplicationController
 
   def fun_fact_params
     params.require(:fun_fact).permit(:text)
+  end
+
+  def enforce_fun_fact_limit
+    if current_user.exceeds_fun_fact_limit?
+      flash[:error] = "Hey you! You already have 2 facts, delete one if you want to add another."
+      redirect_to :root
+    end
   end
 end
