@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     post :import, on: :collection
   end
 
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'auth/:provider/callback', to: 'sessions#create', as: :oauth_callback
+  get 'auth/failure', to: redirect('/')
+  get 'login', to: 'sessions#new', as: :login
+  get 'logout', to: 'sessions#destroy', as: :logout
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
