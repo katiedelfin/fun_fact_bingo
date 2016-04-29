@@ -3,6 +3,8 @@ class CardsController < ApplicationController
 
   def index
     @cards = Card.all
+
+    render :index, layout: 'plain'
   end
 
   def regen

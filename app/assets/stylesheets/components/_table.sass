@@ -1,0 +1,143 @@
+// *************************************
+//
+//   Table
+//   -> Tabular data
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %table.table[sort|striped]
+//
+//   %thead.table-header
+//
+//     %tr.table-row
+//
+//       %th.table-head
+//
+//   %tbody.table-body
+//
+//     %tr.table-row
+//
+//       %td.table-data[avatar|low]
+//
+// *************************************
+
+.table
+  box-sizing: border-box
+  width: 100%
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Striped ----- //
+
+.table--striped
+
+  .table-body .table-row:nth-child(odd)
+    background: $c-background
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Sizes ----- //
+
+// Flush
+
+.table--f
+
+  .table-data,
+  .table-header
+    padding: $b-space-s 0
+
+// Large
+
+.table--m
+
+  .table-data,
+  .table-header
+    padding-bottom: $b-space
+    padding-top: $b-space
+
+// ----- Shared ----- //
+
+.table-data,
+.table-header
+  line-height: $b-lineHeight
+  padding: $b-space-s $b-space
+  vertical-align: top
+
+// ----- Data ----- //
+
+.table-data
+  font-size: $b-fontSize-s
+  text-align: left
+  vertical-align: middle
+
+// Avatar
+
+.table-data--avatar
+  width: 33px
+
+// ----- Header ----- //
+
+.table-header
+  border-top: 0
+  text-align: left
+
+// ----- Head ----- //
+
+.table-head
+  border-bottom: $b-border
+  border-top: 0
+  font-size: $b-fontSize-xs
+  padding: $b-space-s $b-space
+  vertical-align: bottom
+  color: $c-subdue
+
+// -------------------------------------
+//   Responsive
+// -------------------------------------
+
++respond-to($g-m, 'max-width')
+
+  .table,
+  .table-body
+    display: block
+    width: 100%
+
+  .table-data,
+  .table-row
+    display: block
+    text-align: left
+    white-space: normal
+
+  .table-data::before
+    content: attr(data-title) ":\00A0"
+    // font-weight: $b-fontWeight-semibold
+
+  .table-data--low
+    display: none
+
+  .table-header
+    display: none
+
+// -------------------------------------
+//   Static
+// -------------------------------------
+
++respond-to($g-m, 'max-width')
+
+  .table--static
+
+    .table-header
+      display: table-header-group
+
+    .table-row
+      display: table-row
+      text-align: center
+
+    .table-body
+      display: table-row-group

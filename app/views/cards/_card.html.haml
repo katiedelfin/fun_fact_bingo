@@ -1,9 +1,9 @@
 - card.fun_facts.in_groups_of(Card::CARD_SIZE / 2) do |subcard|
-  .card
+  .bingo-card
     %h1
       Fun Fact Bingo
       %small ##{card.id}
-    .inner-card
+    .bingo-card-inner
       %table
         -# Insert a blank square
         - subcard = subcard.insert(subcard.length / 2, FunFact.new(text: "FREE SPACE"))

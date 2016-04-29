@@ -1,4 +1,5 @@
-%tr
-  %td= fun_fact.text
-  %td= link_to "edit", edit_fun_fact_path(fun_fact)
-  %td= link_to "delete", fun_fact_path(fun_fact), method: :delete
+%tr.table-row
+  %td.table-data= fun_fact.text
+  %td.table-data.tar
+    = link_to "edit", edit_fun_fact_path(fun_fact), class: 'btn btn--inline'
+    = link_to "delete", fun_fact_path(fun_fact), method: :delete, class: 'btn btn--inline'

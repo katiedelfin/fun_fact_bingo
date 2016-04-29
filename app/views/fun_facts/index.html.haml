@@ -1,6 +1,8 @@
+.fr= link_to "New Fun Fact", new_fun_fact_path, class: 'btn'
+
 %h1 Fun Facts for #{current_user.name}
 
-%p= link_to "New Fun Fact", new_fun_fact_path
-
-%table
-  = render @fun_facts
+.well
+  .card
+    %table.table
+      %tbody.table-body= render @fun_facts

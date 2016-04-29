@@ -1,0 +1,43 @@
+// -------------------------------------
+//   Simple Form
+// -------------------------------------
+
+.simple_form
+
+  .input
+    margin-bottom: $b-space
+
+  label
+    font-size: 28px
+    display: block
+    margin-bottom: $b-space-xs
+
+  select
+    min-width: 200px
+
+  textarea
+    border: 1px solid rgba($c-background, 0.95)
+    border-radius: 3px
+    font-size: 18px
+    padding: $b-space-s
+    width: 95%
+
+  input[type='submit']
+    background-color: $c-highlight
+    border: 0
+    border-radius: 40px
+    color: #fff
+    cursor: pointer
+    display: inline-block
+    font-size: 18px
+    font-weight: 300
+    line-height: 3
+    margin-top: $b-space
+    padding: 0 $b-space-l
+    transition: all 0.2s ease-in-out
+
+  input[type='submit']:active,
+  input[type='submit']:focus,
+  input[type='submit']:hover
+    background-color: $c-subdue
+    color: #fff

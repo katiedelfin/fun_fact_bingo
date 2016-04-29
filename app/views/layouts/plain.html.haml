@@ -1,5 +1,5 @@
 !!!
-%html
+%html.plain
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FunFactBingo
@@ -7,14 +7,4 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .header
-      %h1= link_to "FUN FACT BINGO", root_path
-
-      - if admin_user?
-        %ul
-          %li= link_to "Print Cards", cards_path
-          %li= link_to "Regenerate Cards", regen_cards_path
-
-      .clear
-
-    .cell= yield
+    = yield
