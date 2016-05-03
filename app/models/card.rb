@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  CARD_SIZE = 48
+  CARD_SIZE = 24
 
   validates :fun_fact_ids, uniqueness: true, length: { is: CARD_SIZE }, card_integrity: true
 
@@ -21,8 +21,12 @@ class Card < ActiveRecord::Base
 
   # Super inneficient but we need to maintain order
   def fun_facts
-    fun_fact_ids.map do |id|
+    @fun_facts ||= fun_fact_ids.map do |id|
       FunFact.find(id)
     end
+  end
+
+  def squares
+    fun_facts.insert(fun_facts.length / 2, FunFact.new(text: "Free Space"))
   end
 end
